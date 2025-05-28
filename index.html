@@ -1,11 +1,25 @@
 <!DOCTYPE html><html lang="en">
-<head>
+<head><link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#2a2a40" />
+<link rel="icon" href="icon.png" type="image/png" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lord Rahl - Sign In</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
-    body {
+    body {<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(function (registration) {
+          console.log('ServiceWorker registered: ', registration.scope);
+        })
+        .catch(function (error) {
+          console.log('ServiceWorker failed: ', error);
+        });
+    });
+  }
+</script>
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(to right, #1e1e2f, #2e2e4f);
