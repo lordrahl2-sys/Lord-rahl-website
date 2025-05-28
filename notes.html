@@ -1,64 +1,91 @@
-<a href="your-file-name.pdf" target="_blank">📥 Download PDF</a><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lord Rahl - Notes</title>
+  <title>Lord Rahl | Notes</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
+      margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #f8f9fa;
+      background: #f1f1f1;
       color: #333;
-      padding: 40px 20px;
+    }
+    header {
+      background: #1e1e2f;
+      color: white;
+      padding: 20px;
       text-align: center;
     }
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+      margin: 0;
+      font-size: 2rem;
+    }
+    main {
+      padding: 40px 20px;
+      text-align: center;
     }
     .note {
-      margin: 20px auto;
-      max-width: 600px;
-      background: #ffffff;
+      background: white;
       padding: 20px;
+      margin: 20px auto;
+      max-width: 500px;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .note p {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
     }
     .note a {
+      display: inline-block;
+      padding: 10px 15px;
+      background: #007bff;
+      color: white;
       text-decoration: none;
-      color: #1abc9c;
-      font-weight: 600;
+      border-radius: 5px;
+      transition: background 0.3s;
     }
     .note a:hover {
-      text-decoration: underline;
+      background: #0056b3;
     }
     .back {
       margin-top: 40px;
       display: inline-block;
-      padding: 10px 20px;
-      background: #007bff;
+      background: #444;
       color: white;
-      border-radius: 6px;
+      padding: 10px 15px;
+      border-radius: 5px;
       text-decoration: none;
     }
     .back:hover {
-      background: #0056b3;
+      background: #222;
     }
   </style>
 </head>
 <body>
 
-  <h1>📘 Available Notes</h1>
+  <header>
+    <h1>📘 Lord Rahl - Notes</h1>
+  </header>
 
-  <div class="note">
-    <p>Business Mathematics 2</p>
-    <a href="business-maths.pdf" target="_blank">📥 Download PDF</a>
-  </div>
+  <main>
+    <div class="note">
+      <p>Business Mathematics 2</p>
+      <a href="business-maths.pdf" target="_blank">📥 Download PDF</a>
+    </div>
 
-  <!-- You can duplicate the note block above for more files -->
+    <!-- Add more notes by copying this block -->
+    <!--
+    <div class="note">
+      <p>Another Subject Name</p>
+      <a href="another-file.pdf" target="_blank">📥 Download PDF</a>
+    </div>
+    -->
 
-  <a class="back" href="index.html">⬅️ Back to Home</a>
+    <a class="back" href="index.html">⬅️ Back to Home</a>
+  </main>
 
 </body>
 </html>
