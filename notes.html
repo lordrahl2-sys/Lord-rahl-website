@@ -1,91 +1,181 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lord Rahl | Notes</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f1f1f1;
-      color: #333;
-    }
-    header {
-      background: #1e1e2f;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    main {
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .note {
-      background: white;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 500px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    .note p {
-      margin: 0 0 10px;
-      font-size: 1.1rem;
-    }
-    .note a {
-      display: inline-block;
-      padding: 10px 15px;
-      background: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-    .note a:hover {
-      background: #0056b3;
-    }
-    .back {
-      margin-top: 40px;
-      display: inline-block;
-      background: #444;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 5px;
-      text-decoration: none;
-    }
-    .back:hover {
-      background: #222;
-    }
+      padding: 0;
+      box-sizing: border-box;
+    }body {
+  font-family: 'Poppins', sans-serif;
+  background: #f4f6f9;
+  color: #333;
+}
+
+header {
+  background: #12172d;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.2rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.search-bar {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.search-bar input {
+  padding: 12px 20px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.note-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  margin-bottom: 25px;
+}
+
+.note-card:hover {
+  transform: translateY(-5px);
+}
+
+.note-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #1e1e2f;
+}
+
+.note-link {
+  text-decoration: none;
+  color: white;
+  background: #007bff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.note-link:hover {
+  background: #0056b3;
+}
+
+.note-icon {
+  margin-right: 8px;
+}
+
+.back-btn {
+  display: block;
+  margin: 40px auto 0;
+  text-align: center;
+  background: #444;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  max-width: 200px;
+}
+
+.back-btn:hover {
+  background: #222;
+}
+
+.toggle-theme {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #222;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.dark-mode {
+  background: #1e1e1e;
+  color: white;
+}
+
+.dark-mode .note-card {
+  background: #2c2c2c;
+}
+
+@media (max-width: 600px) {
+  .note-title {
+    font-size: 1rem;
+  }
+  .note-link {
+    font-size: 0.9rem;
+  }
+}
+
   </style>
 </head>
-<body>
+<body>  <header>
+    <h1>📚 Lord Rahl - Notes Library</h1>
+  </header><button class="toggle-theme" onclick="toggleTheme()">🌓</button>
 
-  <header>
-    <h1>📘 Lord Rahl - Notes</h1>
-  </header>
+  <div class="container">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search notes..." onkeyup="filterNotes()" />
+    </div><div class="note-card" data-title="Business Mathematics 2">
+  <div class="note-title">Business Mathematics 2</div>
+  <a class="note-link" href="business-maths.pdf" target="_blank">
+    <i class="fa-solid fa-file-pdf note-icon"></i> Download PDF
+  </a>
+</div>
 
-  <main>
-    <div class="note">
-      <p>Business Mathematics 2</p>
-      <a href="business-maths.pdf" target="_blank">📥 Download PDF</a>
-    </div>
+<div class="note-card" data-title="Statistics 1">
+  <div class="note-title">Statistics 1</div>
+  <a class="note-link" href="statistics.pdf" target="_blank">
+    <i class="fa-solid fa-file-pdf note-icon"></i> Download PDF
+  </a>
+</div>
 
-    <!-- Add more notes by copying this block -->
-    <!--
-    <div class="note">
-      <p>Another Subject Name</p>
-      <a href="another-file.pdf" target="_blank">📥 Download PDF</a>
-    </div>
-    -->
+<form action="#" method="POST" enctype="multipart/form-data" style="margin-top:40px;">
+  <h2>Upload New Note (Admin)</h2>
+  <input type="file" name="note" accept="application/pdf" disabled style="margin: 10px 0;">
+  <br>
+  <button type="submit" disabled>Upload (coming soon)</button>
+</form>
 
-    <a class="back" href="index.html">⬅️ Back to Home</a>
-  </main>
+<a href="index.html" class="back-btn">⬅️ Back to Home</a>
 
-</body>
+  </div>  <script>
+    function filterNotes() {
+      const input = document.getElementById('searchInput');
+      const filter = input.value.toLowerCase();
+      const notes = document.querySelectorAll('.note-card');
+      notes.forEach(note => {
+        const title = note.getAttribute('data-title').toLowerCase();
+        note.style.display = title.includes(filter) ? '' : 'none';
+      });
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script></body>
 </html>
