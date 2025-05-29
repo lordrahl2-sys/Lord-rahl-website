@@ -4,50 +4,62 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lord Rahl</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
     }
     .hero {
-      position: relative;
-      height: 100vh;
+      height: 100%;
       background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Lord-Rahl-Fantasy-Cover.jpg/1920px-Lord-Rahl-Fantasy-Cover.jpg') no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .overlay {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       color: white;
       text-align: center;
+      padding: 20px;
     }
     .overlay h1 {
-      font-size: 3em;
-      margin-bottom: 0.5em;
+      font-size: 3rem;
+      margin-bottom: 1rem;
     }
     .overlay p {
-      font-size: 1.5em;
-      margin-bottom: 2em;
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
     }
-    .overlay a {
-      display: inline-block;
-      margin: 0 10px;
-      padding: 0.8em 1.5em;
-      background: #6b46c1;
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
+    .buttons a {
+      text-decoration: none;
+      background-color: #7e5bef;
+      padding: 12px 24px;
       border-radius: 10px;
       color: white;
-      text-decoration: none;
       font-weight: bold;
-      transition: background 0.3s;
+      transition: background 0.3s ease;
     }
-    .overlay a:hover {
-      background: #9f7aea;
+    .buttons a:hover {
+      background-color: #a78bfa;
     }
   </style>
 </head>
@@ -56,8 +68,8 @@
   <section class="hero">
     <div class="overlay">
       <h1>Welcome to Lord Rahl</h1>
-      <p>Empowering Knowledge. One Note at a Time.</p>
-      <div>
+      <p>Your notes, your knowledge — share them with the world.</p>
+      <div class="buttons">
         <a href="login.html">Login</a>
         <a href="signup.html">Sign Up</a>
       </div>
