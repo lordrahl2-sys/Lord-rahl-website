@@ -1,80 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lord Rahl</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body, html {
-      height: 100%;
-      font-family: Arial, sans-serif;
-    }
-    .hero {
-      height: 100%;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Lord-Rahl-Fantasy-Cover.jpg/1920px-Lord-Rahl-Fantasy-Cover.jpg') no-repeat center center/cover;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-    .overlay h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    .overlay p {
-      font-size: 1.3rem;
-      margin-bottom: 2rem;
-    }
-    .buttons {
-      display: flex;
-      gap: 20px;
-    }
-    .buttons a {
-      text-decoration: none;
-      background-color: #7e5bef;
-      padding: 12px 24px;
-      border-radius: 10px;
-      color: white;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-    .buttons a:hover {
-      background-color: #a78bfa;
-    }
-  </style>
+  <meta name="theme-color" content="#111" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Lord Rahl Notes</title>
 </head>
 <body>
-
-  <section class="hero">
-    <div class="overlay">
-      <h1>Welcome to Lord Rahl</h1>
-      <p>Your notes, your knowledge — share them with the world.</p>
-      <div class="buttons">
-        <a href="login.html">Login</a>
-        <a href="signup.html">Sign Up</a>
-      </div>
+  <header>
+    <nav>
+      <h1>Lord Rahl</h1>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#notes">Notes</a></li>
+        <li><a href="#upload">Upload</a></li>
+        <li><a href="#login">Login</a></li>
+        <li><a href="#register">Register</a></li>
+      </ul>
+    </nav>
+  </header>  <section id="home" class="hero">
+    <h2>Welcome to Lord Rahl</h2>
+    <p>Download, Upload & Search Notes with Ease</p>
+    <button onclick="document.getElementById('upload').scrollIntoView()">Get Started</button>
+  </section>  <section id="notes">
+    <h3>Search Notes</h3>
+    <input type="text" id="searchBox" placeholder="Search by title...">
+    <div id="notesList">
+      <!-- Notes will be loaded here -->
     </div>
-  </section>
+  </section>  <section id="upload">
+    <h3>Upload a Note</h3>
+    <form id="uploadForm">
+      <input type="text" id="noteTitle" placeholder="Note Title" required>
+      <input type="file" id="noteFile" accept="application/pdf" required>
+      <button type="submit">Upload</button>
+    </form>
+  </section>  <section id="login">
+    <h3>Login</h3>
+    <form>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+  </section>  <section id="register">
+    <h3>Register</h3>
+    <form>
+      <input type="text" placeholder="Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+  </section>  <footer>
+    <p>Lord Rahl &copy; 2025. All rights reserved.</p>
+  </footer>  <script>
+    const notesList = document.getElementById('notesList');
+    const uploadForm = document.getElementById('uploadForm');
 
-</body>
+    uploadForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const title = document.getElementById('noteTitle').value;
+      const file = document.getElementById('noteFile').files[0];
+
+      const note = document.createElement('div');
+      note.innerHTML = `<h4>${title}</h4><a href="#" onclick="alert('This would download: ${file.name}')">Download</a>`;
+      notesList.appendChild(note);
+      uploadForm.reset();
+    });
+
+    document.getElementById('searchBox').addEventListener('input', function () {
+      const query = this.value.toLowerCase();
+      Array.from(notesList.children).forEach(note => {
+        const visible = note.textContent.toLowerCase().includes(query);
+        note.style.display = visible ? 'block' : 'none';
+      });
+    });
+  </script></body>
 </html>
