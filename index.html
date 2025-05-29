@@ -1,135 +1,372 @@
-<!DOCTYPE html><html lang="en">
-<head><link rel="manifest" href="manifest.json" />
-<meta name="theme-color" content="#2a2a40" />
-<link rel="icon" href="icon.png" type="image/png" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lord Rahl - Sign In</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  <style>
-    body {<script><!-- Cover Section with Lord Rahl Image -->
-<section style="position: relative; height: 100vh; background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Lord-Rahl-Fantasy-Cover.jpg/1920px-Lord-Rahl-Fantasy-Cover.jpg') no-repeat center center/cover;">
-  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center;">
-    <h1 style="font-size: 3em; margin-bottom: 1rem;">Welcome to Lord Rahl</h1>
-    <p style="font-size: 1.5em; margin-bottom: 2rem;">Empowering Knowledge. One Note at a Time.</p>
-    <div>
-      <a href="login.html" style="background: #6b46c1; padding: 0.8em 1.5em; margin: 0 10px; border-radius: 8px; color: white; text-decoration: none;">Login</a>
-      <a href="signup.html" style="background: #3182ce; padding: 0.8em 1.5em; margin: 0 10px; border-radius: 8px; color: white; text-decoration: none;">Sign Up</a>
-    </div>
-  </div>
-</section>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(function (registration) {
-          console.log('ServiceWorker registered: ', registration.scope);
-        })
-        .catch(function (error) {
-          console.log('ServiceWorker failed: ', error);
-        });
-    });
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Advanced Website with Login & Search</title>
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+<style>
+  /* RESET */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
   }
-</script>
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #1e1e2f, #2e2e4f);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fafafa;
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* NAVBAR */
+  nav {
+    background-color: #0d2538;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  nav .logo {
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 22px;
+  }
+  nav ul li a {
+    color: #cfd8dc;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  nav ul li a:hover,
+  nav ul li a:focus {
+    background-color: #1c4966;
+    outline: none;
+  }
+
+  /* Auth buttons */
+  .auth-buttons button {
+    background-color: #ff7043;
+    border: none;
+    padding: 8px 16px;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 12px;
+    transition: background-color 0.3s ease;
+  }
+  .auth-buttons button:hover,
+  .auth-buttons button:focus {
+    background-color: #e64a19;
+    outline: none;
+  }
+  .auth-buttons span {
+    color: #90a4ae;
+    margin-left: 12px;
+    font-weight: 600;
+  }
+  .auth-buttons button.logout {
+    background-color: #607d8b;
+  }
+  .auth-buttons button.logout:hover {
+    background-color: #455a64;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+  }
+  .hero img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    filter: brightness(60%);
+    border-radius: 8px;
+  }
+  .hero .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-weight: 900;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+    user-select: none;
+  }
+
+  /* SEARCH BAR */
+  .search-bar {
+    margin: 25px auto 0;
+    max-width: 640px;
+    display: flex;
+    gap: 8px;
+    padding: 0 12px;
+  }
+  .search-bar input[type="search"] {
+    flex-grow: 1;
+    padding: 12px 18px;
+    font-size: 1.15rem;
+    border: 2px solid #90a4ae;
+    border-radius: 30px;
+    transition: border-color 0.3s ease;
+  }
+  .search-bar input[type="search"]:focus {
+    border-color: #ff7043;
+    outline: none;
+  }
+  .search-bar button {
+    background-color: #ff7043;
+    border: none;
+    color: white;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .search-bar button:hover,
+  .search-bar button:focus {
+    background-color: #e64a19;
+    outline: none;
+  }
+
+  /* MAIN CONTENT */
+  main {
+    flex-grow: 1;
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    padding: 30px;
+  }
+  main h2 {
+    margin-bottom: 20px;
+    color: #37474f;
+    font-weight: 700;
+  }
+  main .content-item {
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    border-bottom: 1px solid #eceff1;
+    padding-bottom: 10px;
+  }
+
+  /* FOOTER */
+  footer {
+    background-color: #263238;
+    color: #b0bec5;
+    text-align: center;
+    padding: 18px 10px;
+    font-size: 0.9rem;
+    user-select: none;
+  }
+
+  /* MODALS (LOGIN & SIGNUP) */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
+  }
+  .modal.active {
+    display: flex;
+  }
+  .modal-content {
+    background: white;
+    width: 360px;
+    border-radius: 12px;
+    padding: 30px 28px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+    position: relative;
+    animation: fadeInUp 0.4s ease forwards;
+  }
+  @keyframes fadeInUp {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  .modal-content h3 {
+    margin-bottom: 22px;
+    font-weight: 700;
+    color: #0d2538;
+    text-align: center;
+  }
+  .modal-content label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    color: #37474f;
+  }
+  .modal-content input[type="text"],
+  .modal-content input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 18px;
+    border: 1.8px solid #90a4ae;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  .modal-content input[type="text"]:focus,
+  .modal-content input[type="password"]:focus {
+    border-color: #ff7043;
+    outline: none;
+  }
+  .modal-content button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff7043;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.1rem;
+  }
+  .modal-content button:hover,
+  .modal-content button:focus {
+    background-color: #e64a19;
+    outline: none;
+  }
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #90a4ae;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  .modal-close:hover,
+  .modal-close:focus {
+    color: #ff7043;
+    outline: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    .hero img {
+      height: 280px;
     }
-    .auth-container {
-      background-color: #2a2a40;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
+    .hero .hero-text {
+      font-size: 2rem;
+      padding: 0 15px;
     }
-    h2 {
-      margin-bottom: 1.5rem;
-      font-weight: 600;
+    main {
+      margin: 20px 16px;
+      padding: 20px 18px;
     }
-    input {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 0.5rem;
-      font-size: 1rem;
+    nav ul {
+      display: none;
     }
-    button {
-      background: #6a5acd;
-      color: #fff;
-      padding: 0.8rem;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      width: 100%;
-      font-size: 1rem;
+    nav .auth-buttons {
+      margin-left: auto;
     }
-    button:hover {
-      background: #7b6ee9;
-    }
-    .switch {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-    }
-    .switch a {
-      color: #8fa0ff;
-      text-decoration: underline;
-      cursor: pointer;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <div class="auth-container" id="auth">
-    <h2 id="auth-title">Login</h2>
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="authAction()" id="auth-button">Login</button>
-    <div class="switch">
-      <span id="auth-switch">Don't have an account? <a onclick="toggleAuth()">Sign Up</a></span>
-    </div>
-  </div>  <script>
-    let isLogin = true;
 
-    function toggleAuth() {
-      isLogin = !isLogin;
-      document.getElementById('auth-title').innerText = isLogin ? 'Login' : 'Sign Up';
-      document.getElementById('auth-button').innerText = isLogin ? 'Login' : 'Sign Up';
-      document.getElementById('auth-switch').innerHTML = isLogin ?
-        "Don't have an account? <a onclick=\"toggleAuth()\">Sign Up</a>" :
-        "Already have an account? <a onclick=\"toggleAuth()\">Login</a>";
-    }
+<!-- NAVBAR -->
+<nav>
+  <div class="logo" tabindex="0" role="link" aria-label="Go to homepage" onclick="location.reload()">MySite</div>
+  <ul role="menubar" aria-label="Primary Navigation">
+    <li role="none"><a href="#" role="menuitem" tabindex="0">Home</a></li>
+    <li role="none"><a href="#" role="menuitem" tabindex="0">About</a></li>
+    <li role="none"><a href="#" role="menuitem" tabindex="0">Services</a></li>
+    <li role="none"><a href="#" role="menuitem" tabindex="0">Contact</a></li>
+  </ul>
+  <div class="auth-buttons" id="auth-buttons">
+    <button id="loginBtn" aria-haspopup="dialog" aria-controls="loginModal" aria-expanded="false">Login</button>
+    <button id="signupBtn" aria-haspopup="dialog" aria-controls="signupModal" aria-expanded="false">Sign Up</button>
+  </div>
+</nav>
 
-    function authAction() {
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-      if (!username || !password) {
-        alert('Please enter all fields.');
-        return;
-      }
-      const stored = JSON.parse(localStorage.getItem('users')) || {};
-      if (isLogin) {
-        if (stored[username] && stored[username] === password) {
-          alert('Login successful!');
-          window.location.href = 'notes.html';
-        } else {
-          alert('Invalid credentials');
-        }
-      } else {
-        if (stored[username]) {
-          alert('User already exists');
-        } else {
-          stored[username] = password;
-          localStorage.setItem('users', JSON.stringify(stored));
-          alert('Account created! Please log in.');
-          toggleAuth();
-        }
-      }
-    }
-  </script></body>
-</html>
+<!-- HERO -->
+<section class="hero" aria-label="Website cover photo and welcome message">
+  <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80" alt="A scenic nature view with mountains and forest" />
+  <div class="hero-text">Welcome to My Website</div>
+</section>
+
+<!-- SEARCH BAR -->
+<div class="search-bar" role="search" aria-label="Search site content">
+  <input
+    type="search"
+    id="searchInput"
+    placeholder="Search content..."
+    aria-label="Search content"
+    autocomplete="off"
+  />
+  <button id="clearSearchBtn" aria-label="Clear search">Clear</button>
+</div>
+
+<!-- MAIN CONTENT -->
+<main id="main-content" aria-live="polite" aria-atomic="true">
+  <h2>Featured Content</h2>
+  <div class="content-item" tabindex="0">Welcome to our site! You can search through this text using the search bar above.</div>
+  <div class="content-item" tabindex="0">We offer a variety of services tailored to your needs.</div>
+  <div class="content-item" tabindex="0">Contact us anytime for more information.</div>
+  <div class="content-item" tabindex="0">This is a demo paragraph for testing search functionality.</div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 Your Website. All rights reserved.
+</footer>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle" aria-hidden="true">
+  <div class="modal-content">
+    <button class="modal-close" aria-label="Close login modal" onclick="closeModal('loginModal')">&times;</button>
+    <h3 id="loginTitle">Login</h3>
+    <form id="loginForm" onsubmit="event.preventDefault(); loginUser();">
+      <label for="loginUsername">Username</label>
+      <input type="text" id="loginUsername" name="loginUsername" required autocomplete="username" />
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" name="loginPassword" required autocomplete="current-password" />
+      <button type="submit">Log In</button>
+      <p id="loginError" style="color:#d32f2f; margin-top:10px; font-weight:600;"></p>
+    </form>
+  </div>
+</div>
+
+<!-- SIGNUP MODAL -->
+<div class="modal" id="signupModal" role="dialog" aria-modal="true" aria-labelledby="signupTitle" aria-hidden="true">
+  <div class="modal-content">
+    <button class="modal-close" aria-label="Close signup modal" onclick="closeModal('signupModal')">&times;</button>
+    <h3 id="signupTitle">Sign Up</h3>
+    <form id="signupForm" onsubmit="event.preventDefault(); signupUser();">
+      <label for="signupUsername">Username</label>
+      <input type="text" id="signupUsername" name="signupUsername" required autocomplete="username" minlength="3" />
+      <label for="signupPassword">Password</label>
+      <input type="password" id="signupPassword" name="signupPassword" required autocomplete="new-password" minlength="6" />
+      <button type="submit">Sign Up</button>
+      <p id="signupError" style="color:#d32f2f; margin-top:10
