@@ -2,78 +2,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#111" />
+  <meta name="theme-color" content="#111827" />
+  <title>Lord Rahl - Login / Sign Up</title>
   <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Lord Rahl Notes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-papka84XGc3hzD4E3dLZ2XtFV9XOt+Ly4LVZkRCH5WBFNhMn3A3HdR+xBpVkU6Q+3y2ZwRmO0Xuw6qz0qfs+Zg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #111827;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #1f2937;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      max-width: 400px;
+      width: 100%;
+    }
+    .container h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .input-group {
+      margin-bottom: 1rem;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      background: #3b82f6;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .toggle {
+      margin-top: 1rem;
+      text-align: center;
+      color: #9ca3af;
+    }
+    .toggle a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <h1>Lord Rahl</h1>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#notes">Notes</a></li>
-        <li><a href="#upload">Upload</a></li>
-        <li><a href="#login">Login</a></li>
-        <li><a href="#register">Register</a></li>
-      </ul>
-    </nav>
-  </header>  <section id="home" class="hero">
-    <h2>Welcome to Lord Rahl</h2>
-    <p>Download, Upload & Search Notes with Ease</p>
-    <button onclick="document.getElementById('upload').scrollIntoView()">Get Started</button>
-  </section>  <section id="notes">
-    <h3>Search Notes</h3>
-    <input type="text" id="searchBox" placeholder="Search by title...">
-    <div id="notesList">
-      <!-- Notes will be loaded here -->
+  <div class="container" id="auth-container">
+    <h2>Login</h2>
+    <div class="input-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="you@example.com" />
     </div>
-  </section>  <section id="upload">
-    <h3>Upload a Note</h3>
-    <form id="uploadForm">
-      <input type="text" id="noteTitle" placeholder="Note Title" required>
-      <input type="file" id="noteFile" accept="application/pdf" required>
-      <button type="submit">Upload</button>
-    </form>
-  </section>  <section id="login">
-    <h3>Login</h3>
-    <form>
-      <input type="email" placeholder="Email" required>
-      <input type="password" placeholder="Password" required>
-      <button type="submit">Login</button>
-    </form>
-  </section>  <section id="register">
-    <h3>Register</h3>
-    <form>
-      <input type="text" placeholder="Name" required>
-      <input type="email" placeholder="Email" required>
-      <input type="password" placeholder="Password" required>
-      <button type="submit">Sign Up</button>
-    </form>
-  </section>  <footer>
-    <p>Lord Rahl &copy; 2025. All rights reserved.</p>
-  </footer>  <script>
-    const notesList = document.getElementById('notesList');
-    const uploadForm = document.getElementById('uploadForm');
-
-    uploadForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const title = document.getElementById('noteTitle').value;
-      const file = document.getElementById('noteFile').files[0];
-
-      const note = document.createElement('div');
-      note.innerHTML = `<h4>${title}</h4><a href="#" onclick="alert('This would download: ${file.name}')">Download</a>`;
-      notesList.appendChild(note);
-      uploadForm.reset();
-    });
-
-    document.getElementById('searchBox').addEventListener('input', function () {
-      const query = this.value.toLowerCase();
-      Array.from(notesList.children).forEach(note => {
-        const visible = note.textContent.toLowerCase().includes(query);
-        note.style.display = visible ? 'block' : 'none';
-      });
-    });
-  </script></body>
-</html>
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="********" />
+    </div>
+    <button onclick="login()">Login</button>
+    <div class="toggle">
+      Don't have an account? <a href="#" onclick="toggleForm()">Sign Up</a>
+    </div>
+  </div>  <script>
+    const authContainer = document.getElementById('auth-container
