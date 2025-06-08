@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Register</title></head>
+<body>
+  <h2>Register</h2>
+  <form action="register.php" method="post">
+    <input type="email" name="email" required placeholder="Email"><br>
+    <input type="password" name="password" required placeholder="Password"><br>
+    <button type="submit">Register</button>
+  </form>
+</body>
+</html>
