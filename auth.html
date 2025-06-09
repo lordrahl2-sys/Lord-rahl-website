@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login / Signup</title>
+</head>
+<body>
+  <h2>Welcome</h2>
+  <p>Login or create an account</p>
+
+  <input type="email" id="email" placeholder="Email"><br><br>
+  <input type="password" id="password" placeholder="Password"><br><br>
+
+  <button onclick="signup()">Sign Up</button>
+  <button onclick="login()">Log In</button>
+
+  <script type="module">
+    import { signup as doSignup, login as doLogin } from './auth.js';
+
+    async function signup() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      try {
+        await doSignup(email, password);
+        alert("Account created! Logging in...");
+        window.location.href = "index.html"; // Redirect to main page
+      } catch (error) {
+        alert("Signup failed: " + error.message);
+      }
+    }
+
+    async function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      try {
+        await doLogin(email, password);
+        alert("Logged in successfully!");
+        window.location.href = "index.html"; // Redirect to main page
+      } catch (error) {
+        alert("Login failed: " + error.message);
+      }
+    }
+  </script>
+</body>
+</html>
