@@ -1,211 +1,36 @@
+<!-- index.html (Login Page) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lord Rahl</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      color: #333;
-    }
-    header {
-      background-color: #4CAF50;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-    nav {
-      background-color: #333;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 0.5rem 0;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    main {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    section {
-      background: white;
-      padding: 1rem;
-      border-radius: 8px;
-      margin-top: 2rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    input[type="file"], input[type="text"], input[type="email"], textarea {
-      padding: 0.5rem;
-      width: 100%;
-      margin-bottom: 1rem;
-      box-sizing: border-box;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      resize: vertical;
-    }
-    button {
-      padding: 0.5rem 1rem;
-      background-color: #4CAF50;
-      border: none;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-    .ad-container {
-      margin: 2rem 0;
-      text-align: center;
-      background: #e2e2e2;
-      padding: 1rem;
-      border-radius: 8px;
-      color: #555;
-    }
-    .paid-notes-list p {
-      margin: 0.5rem 0;
-      padding: 0.5rem;
-      background: #f9f9f9;
-      border-radius: 4px;
-      cursor: pointer;
-      border: 1px solid #ddd;
-    }
-    .paid-notes-list p:hover {
-      background: #d7ffd7;
-    }
-    footer {
-      background-color: #222;
-      color: #ccc;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Darken Rahl | Login</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1>Welcome to Lord Rahl's Website</h1>
-  </header>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#notes">Notes</a>
-    <a href="#paid-notes">Paid Notes</a>
-    <a href="#affiliate">Affiliate</a>
-    <a href="#contact">Contact</a>
-    <a href="#donate">Donate</a>
-  </nav>
-  <main>
-    <!-- Ad placeholder: Top of main content -->
-    <div class="ad-container">
-      <!-- Google AdSense placeholder -->
-      <p>Ad space (top)</p>
-    </div>
-
-    <section id="home">
-      <h2>Upload Notes (Free)</h2>
-      <form id="uploadForm">
-        <input type="file" id="noteFile" accept=".pdf,.doc,.docx,.txt" />
-        <button type="submit">Upload</button>
-      </form>
-
-      <h3>Search Notes</h3>
-      <input type="text" id="searchInput" placeholder="Search notes by keyword..." />
-      <div id="searchResults"></div>
-    </section>
-
-    <section id="paid-notes">
-      <h2>Paid Notes</h2>
-      <p>Select a note and pay via M-Pesa to phone number <strong>0112399557</strong>. After payment, contact us with your transaction details.</p>
-      <div class="paid-notes-list">
-        <p onclick="alert('To buy \"Advanced Math Notes\", pay 100 KES via M-Pesa to 0112399557 and send us the confirmation.')">Advanced Math Notes - 100 KES</p>
-        <p onclick="alert('To buy \"Physics Study Guide\", pay 150 KES via M-Pesa to 0112399557 and send us the confirmation.')">Physics Study Guide - 150 KES</p>
-        <p onclick="alert('To buy \"Chemistry Revision\", pay 120 KES via M-Pesa to 0112399557 and send us the confirmation.')">Chemistry Revision - 120 KES</p>
-      </div>
-    </section>
-
-    <section id="affiliate">
-      <h2>Recommended Resources (Affiliate Links)</h2>
-      <ul>
-        <li><a href="https://www.amazon.com/dp/0134685997?tag=youraffiliatetag" target="_blank" rel="noopener">Effective Java (Amazon)</a></li>
-        <li><a href="https://www.udemy.com/course/complete-python-bootcamp/?referralCode=yourcode" target="_blank" rel="noopener">Complete Python Bootcamp (Udemy)</a></li>
-        <li><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="noopener">Machine Learning (Coursera)</a></li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <h2>Hire Me / Contact</h2>
-      <form id="contactForm">
-        <input type="text" id="name" placeholder="Your Name" required />
-        <input type="email" id="email" placeholder="Your Email" required />
-        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-      <div id="contactResponse"></div>
-    </section>
-
-    <section id="donate">
-      <h2>Donate via M-Pesa</h2>
-      <p>If you find this site useful, you can support it by donating via M-Pesa.</p>
-      <p><strong>Paybill/Number:</strong> 0112399557</p>
-      <p>Please send the payment and contact us with your confirmation to get a thank you message or bonus content.</p>
-    </section>
-
-    <!-- Ad placeholder: Bottom of main content -->
-    <div class="ad-container">
-      <!-- Google AdSense placeholder -->
-      <p>Ad space (bottom)</p>
-    </div>
-  </main>
-
-  <footer>
-    &copy; 2025 Lord Rahl. All rights reserved.
-  </footer>
+  <div class="login-container">
+    <h2>Login to Darken Rahl</h2>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+  </div>
 
   <script>
-    const uploadedNotes = [];
-
-    document.getElementById('uploadForm').addEventListener('submit', function(e) {
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const fileInput = document.getElementById('noteFile');
-      if (fileInput.files.length > 0) {
-        const file = fileInput.files[0];
-        uploadedNotes.push(file.name);
-        alert(`Note "${file.name}" uploaded successfully (not actually saved in this demo).`);
-        fileInput.value = '';
-      }
-    });
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
 
-    document.getElementById('searchInput').addEventListener('input', function() {
-      const query = this.value.toLowerCase();
-      const results = uploadedNotes.filter(name => name.toLowerCase().includes(query));
-      const resultsDiv = document.getElementById('searchResults');
-      resultsDiv.innerHTML = results.map(note => `<p>${note}</p>`).join('') || '<p>No results found.</p>';
-    });
-
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      // Simple contact form handling demo
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      if (name && email && message) {
-        document.getElementById('contactResponse').textContent = `Thanks, ${name}! Your message has been received.`;
-        this.reset();
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const user = users.find(u => u.email === email && u.password === password);
+      if (user) {
+        localStorage.setItem("loggedIn", "true");
+        window.location.href = "notes.html";
       } else {
-        document.getElementById('contactResponse').textContent = 'Please fill in all fields.';
+        alert("Invalid login!");
       }
     });
   </script>
